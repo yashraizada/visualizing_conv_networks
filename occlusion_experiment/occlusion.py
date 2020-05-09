@@ -19,7 +19,7 @@ class OcclusionExp():
         self.stride_col = stride[1]
         
         # Define batch size and instantiate batch
-        self.batch_size = self.image_row // self.stride_row * self.image_col // self.stride_col
+        self.batch_size = int(np.ceil((self.image_row-self.obstruction_row)/self.stride_row)) * int(np.ceil((self.image_col-self.obstruction_col)/self.stride_col))
         self.batch = np.zeros((self.batch_size, self.image_row, self.image_col, self.image_chnl))
         
         # Define model
